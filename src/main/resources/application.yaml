@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: empleados
+  profiles:
+    active: dev
+  api:
+    employee:
+      main-url: /api/employee
+  ##JPA Config
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
