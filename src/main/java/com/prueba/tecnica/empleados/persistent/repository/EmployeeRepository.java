@@ -72,7 +72,7 @@ public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Long> 
             ON
             	S.employeeId = E.id
             WHERE
-            	T.title = :charge
+            	LOWER(T.title) = LOWER(:charge)
             	AND T.employeeId = :idEmployeeManager
             """)
     List<EmployeeDTO> findByNameChargeAndIdEmployeeManager(@Param("charge") String charge, @Param("idEmployeeManager") Long idEmployeeManager);
