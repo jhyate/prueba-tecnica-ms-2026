@@ -6,6 +6,8 @@ spring:
   api:
     employee:
       main-url: /api/employee
+    department:
+      main-url: /api/department
   ##JPA Config
   jpa:
     database-platform: org.hibernate.dialect.MariaDBDialect
