@@ -45,6 +45,46 @@
             "variables": ""
           }
         }
+      },
+      {
+        "name": "findByNameChargeAndIdEmployeeManager",
+        "url": "http://localhost:2027/api/employee",
+        "method": "GET",
+        "headers": [],
+        "queryParams": [
+          {
+            "name": "nameCharge",
+            "value": "Ingeniero de desarrollo",
+            "enabled": true
+          },
+          {
+            "name": "idManager",
+            "value": "1",
+            "enabled": true
+          }
+        ],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "none",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
       }
     ]
   }
