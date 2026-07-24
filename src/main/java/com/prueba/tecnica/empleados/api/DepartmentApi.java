@@ -2,6 +2,7 @@ package com.prueba.tecnica.empleados.api;
 
 import com.prueba.tecnica.empleados.dto.DepartmentRequestDTO;
 import com.prueba.tecnica.empleados.service.DepartmentService;
+import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
