@@ -25,6 +25,9 @@ public class EmployeeEntity {
     @Column(name = "SEX")
     private String sex;
 
+    @Column(name = "EMAIL")
+    private String email;
+
     @Column(name = "HIRE_DATE")
     private LocalDateTime hireDate;
 }

@@ -37,8 +37,43 @@ public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Long> 
                     	S.employeeId = DE.employeeId
                     WHERE
                     	D.id = :departmentId
-                  
             """
     )
     List<EmployeeDTO> findByIdDepartment(@Param("departmentId") Long departmentId);
+
+    @Query("""
+            
+           SELECT new com.prueba.tecnica.empleados.dto.EmployeeDTO(
+            E.firstName,
+            E.lastName,
+            E.email,
+            TL.title,
+            S.salary,
+            S.commission,
+            CONCAT(EM.firstName, " ", EM.lastName))
+            FROM
+            	TitleEntity T
+            INNER JOIN DepartmentEmployeeManagerEntity DM
+            ON
+            	DM.employeeId = T.employeeId
+            INNER JOIN DepartmentEmployeeEntity DE
+            ON
+            	DE.departmentId = DE.departmentId
+            INNER JOIN EmployeeEntity E
+            ON
+            	E.id = DE.employeeId
+            INNER JOIN EmployeeEntity EM
+            ON
+            	EM.id = T.employeeId
+            INNER JOIN TitleEntity TL
+            ON
+            	TL.employeeId = E.id
+            INNER JOIN SalaryEntity S
+            ON
+            	S.employeeId = E.id
+            WHERE
+            	LOWER(T.title) = LOWER(:charge)
+            	AND T.employeeId = :idEmployeeManager
+            """)
+    List<EmployeeDTO> findByNameChargeAndIdEmployeeManager(@Param("charge") String charge, @Param("idEmployeeManager") Long idEmployeeManager);
 }

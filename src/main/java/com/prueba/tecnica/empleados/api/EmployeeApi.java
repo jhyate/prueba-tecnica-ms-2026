@@ -5,10 +5,7 @@ import com.prueba.tecnica.empleados.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -28,6 +25,22 @@ public class EmployeeApi {
 
         try {
             return  ResponseEntity.ok(employeeService.findByIdDepartment(departmentId));
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.noContent().build();
+        }
+
+    }
+
+    @GetMapping
+    public ResponseEntity<List<EmployeeDTO>> findByNameChargeAndIdEmployeeManager(
+            @RequestParam(name = "nameCharge", required = true) String nameCharge,
+            @RequestParam(name = "idManager", required = true) Long idManager) {
+
+        log.info("Ejecutando API Employee - servicio findByNameChargeAndIdEmployeeManager" +
+                " name: {}, ID jefe: {}", nameCharge, idManager);
+
+        try {
+            return  ResponseEntity.ok(employeeService.findByNameChargeAndIdEmployeeManager(nameCharge, idManager));
         } catch (NoSuchElementException e) {
             return ResponseEntity.noContent().build();
         }

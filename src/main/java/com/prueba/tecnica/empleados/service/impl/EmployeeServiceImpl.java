@@ -43,7 +43,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         log.info("Ejecutando metodo findByNameChargeAndIdEmployeeManager " +
                 "- cargo: {}, employe manager ID: {}", name, employeeManagerId);
 
-
         if (!titleRepository.existsByTitleIgnoreCase(name)) {
             log.warn("cargo no encontrado");
             throw new NoSuchElementException("No se encuentra el cargo");
@@ -54,6 +53,6 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new NoSuchElementException("No se encuentra el empleado");
         }
 
-        return List.of();
+        return employeeRepository.findByNameChargeAndIdEmployeeManager(name, employeeManagerId);
     }
 }
