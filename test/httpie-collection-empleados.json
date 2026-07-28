@@ -54,7 +54,7 @@
         "queryParams": [
           {
             "name": "nameCharge",
-            "value": "Ingeniero de desarrollo",
+            "value": "INGENIERO DE DESARROLLO",
             "enabled": true
           },
           {
@@ -74,6 +74,35 @@
           },
           "text": {
             "value": "",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "createDepartment",
+        "url": "http://localhost:2027/api/department",
+        "method": "POST",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "{\n  \"name\": \"Recursos Humanos\",\n  \"idEmployeeManager\": 1\n}",
             "format": "application/json"
           },
           "form": {

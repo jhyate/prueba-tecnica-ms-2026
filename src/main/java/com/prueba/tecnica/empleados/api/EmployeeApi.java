@@ -4,6 +4,7 @@ import com.prueba.tecnica.empleados.dto.EmployeeDTO;
 import com.prueba.tecnica.empleados.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +21,7 @@ public class EmployeeApi {
 
     @GetMapping(value = "/{departmentId}")
     public ResponseEntity<List<EmployeeDTO>> findByIdDepartment(
+            @Parameter(name = "departmentId", description = "ID del departamento de trabajo", required = true)
             @PathVariable(name = "departmentId", required = true) Long departmentId) {
         log.info("Ejecutando API Employee - servicio findByIdDepartment ID: {}", departmentId);
 
@@ -33,7 +35,9 @@ public class EmployeeApi {
 
     @GetMapping
     public ResponseEntity<List<EmployeeDTO>> findByNameChargeAndIdEmployeeManager(
+            @Parameter(name = "nameCharge", description = "nombre del cargo", required = true)
             @RequestParam(name = "nameCharge", required = true) String nameCharge,
+            @Parameter(name = "idManager", description = "ID del jefe del departamento", required = true)
             @RequestParam(name = "idManager", required = true) Long idManager) {
 
         log.info("Ejecutando API Employee - servicio findByNameChargeAndIdEmployeeManager" +
